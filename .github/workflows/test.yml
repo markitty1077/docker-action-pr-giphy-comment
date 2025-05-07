@@ -3,18 +3,18 @@ on:
           types:
            - opened
   
-  jobs:
+jobs:
     testing-action:
       runs-on: ubuntu-latest
       permissions:
         issues: write
         pull-requests: write
       steps:
-      - name: Checkout Repository
+      - name: Checkout Repository # must check out the repo
         uses: actions/checkout@v3
   
       - name: Post PR Comment
-        uses: ./
+        uses: ./   # ./ since the custom action files are in root of repo
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           giphy-api-key: ${{ secrets.GIPHY_API_KEY }}
