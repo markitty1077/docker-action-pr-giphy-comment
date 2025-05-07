@@ -6,15 +6,16 @@ on:
 jobs:
     testing-action:
       runs-on: ubuntu-latest
+      # permissions needed at the job level for issues and pull requests to write the comments
       permissions:
-        issues: write
-        pull-requests: write
+        issues: write  
+        pull-requests: write 
       steps:
       - name: Checkout Repository # must check out the repo
         uses: actions/checkout@v3
   
       - name: Post PR Comment
         uses: ./   # ./ since the custom action files are in root of repo
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+        with:   # below are the inputs that the custom action requires
+          github-token: ${{ secrets.GITHUB_TOKEN }}  #by default only has read, so above perms are set
           giphy-api-key: ${{ secrets.GIPHY_API_KEY }}
