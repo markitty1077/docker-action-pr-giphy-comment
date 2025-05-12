@@ -14,3 +14,7 @@ runs:
   args:
     - ${{ inputs.github-token }}
     - ${{ inputs.giphy-api-key }}
+
+branding:
+  icon: 'award'
+  color: 'blue'
